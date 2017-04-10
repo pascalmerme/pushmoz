@@ -1,0 +1,7 @@
+<ion-view>
+  <ion-content class="padding post">
+    <span class="date">{{post.pretty_date}}</span>
+    <h1>{{post.title}}</h1>
+    <div ng-bind-html="trustAsHtml(post.content)"></div>
+  </ion-content>
+</ion-view>

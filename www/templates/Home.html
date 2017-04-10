@@ -1,0 +1,23 @@
+<ion-view hide-back-button="true">
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon icon ion-log-out" ng-click="logout()">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item ng-show="posts.all.length == 0">
+        Aucun article en ligne pour le moment !
+      </ion-item>
+      <ion-item ng-repeat="post in posts.all | orderBy: 'publication':true" class="post-preview" ng-click="showPost(post.id)">
+        <span class="date">{{post.pretty_date}}</span>
+        <h2>{{post.title}}</h2>
+        <div ng-bind-html="trustAsHtml(post.content.slice(0,200) + '...')"></div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
